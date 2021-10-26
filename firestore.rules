@@ -1,0 +1,33 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // lock down everything
+    match /{document=**} {
+     allow read, write: if false;
+    }
+
+    // only allow users to read company doc if they are members of it
+    match /companies/{id}/{document=**} {
+      allow read, write: if isMemberOf(request, id);
+    }
+
+    // only allow user to read/write her own document in the users root collection
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    function isMemberOf(request, id) {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.companyId == id;
+    }
+
+    function isOwner(userId) {
+     return request.auth.uid == userId;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+  }
+}

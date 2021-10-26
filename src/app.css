@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply font-bold text-xl;
+  }
+
+  h2 {
+    @apply font-bold text-lg;
+  }
+
+  a {
+    @apply text-blue-800 hover:underline hover:text-blue-700;
+  }
+  pre {
+    @apply bg-gray-100 p-4 text-xs;
+  }
+
+  tr:not(:last-child) {
+    @apply border-b-4 border-gray-50;
+  }
+  th {
+    @apply text-xs py-2 px-4 bg-gray-800 text-white text-left uppercase font-medium;
+  }
+  td {
+    @apply py-2 px-4 bg-white;
+  }
+
+  input[type='text'],
+  input[type='email'],
+  input[type='number'],
+  input[type='date'],
+  input[type='password'],
+  select {
+    @apply w-full bg-white p-2 border border-gray-300 focus:outline-none focus:ring-1 focus:border-blue-300;
+  }
+}
+
+@layer components {
+  label span {
+    @apply block font-semibold text-xs tracking-wide uppercase mt-2 mb-1;
+  }
+  .submit {
+    @apply py-2 px-4 bg-gray-900 text-white font-medium hover:bg-gray-600;
+    min-width: 10rem;
+  }
+}
