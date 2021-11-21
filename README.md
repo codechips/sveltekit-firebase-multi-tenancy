@@ -38,7 +38,7 @@ Handle any errors. Happy path all the way!
 - If you need to do some admin stuff use Firebase functions and call them from your app. You get more freedom and security
 - I don't think that Firebase Auth works on the server, but not 100% sure. More like 95%
 
-## Seed data 
+## Seed data
 
 To create new user and company pair in Firebase emulator run the command when the emulator is running.
 
@@ -58,6 +58,14 @@ In order for Firebase admin to connect to Firebase emulator you have to export a
 - src/lib/store.ts
 - src/routes/__layout.svelte
 - src/routes/index.svelte
+
+## Troubleshooting
+
+Getting this `Line must be greater than or equal to 1, got -1` error? Me too and I honestly have no idea why or what it means.
+
+Does the app crash in dev server with `<Header> is not a valid SSR component. You may need to review your build config to ensure that dependencies are compiled, rather than imported as pre-compiled modules` error? For me too and I have no idea why.
+
+It's most likely some kind of Vite-related ESM error. See https://github.com/sveltejs/kit/issues/2670
 
 ## Disclaimer
 
